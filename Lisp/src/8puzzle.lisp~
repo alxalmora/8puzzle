@@ -1,0 +1,14 @@
+;; Resolver 8-puzzle utilizando una heuristica de Nilsson 
+(DEFVAR *META* '(1 2 3 4 5 6 7 8 0))
+(DEFUN MANHATTAN (ESTADO)
+  (SETQ DISTANCIA 0)
+  (DOTIMES (N 9)
+    (+ 
+     DISTANCIA
+     (ABS (- (POSITION N ESTADO) N))
+     (ABS (- (POSITION N ESTADO) N))
+   )
+)
+(DEFUN POSX (INDEX)
+  (RETURN-FROM POSX INDEX
+)
