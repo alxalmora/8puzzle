@@ -121,5 +121,5 @@
 ;;Nodo::Struct (id::number, Estado::list, nivel::number, manhattan(estado),operacion::symbol, padre::number 
 ;;(SETQ ESTADOS '(1 2 3 4 0 5 6 7 8))
 (SETQ IDNODO 1)
-(SETQ NODOTEST '( 1 (1 2 3 4 0 5 6 7 8) 0 (MANHATTAN (1 2 3 4 0 5 6 7 8)) 'U 0) )
+(SETQ NODOTEST '( 1 (0 2 3 4 1 5 6 7 8) 0 (MANHATTAN (1 2 3 4 0 5 6 7 8)) 'U 0) )
 (EXPAND NODOTEST)
