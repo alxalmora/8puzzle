@@ -6,10 +6,9 @@
  OPENSTACK '()
  MOVSOL '()
  CLOSEDSTACK '()
- NODO '(7 1 0 6 2 4 5 3 8)
  IDNODO 1
-
 )
+(LOAD "/Users/alxalmora/Documents/8puzzle/Java/InFile.lisp")
 (DEFUN ELEMENT_AT (INDEX ESTADO)
 ;;Regresa el elemento en la posicion index (0 a Length - 1)
 (RETURN-FROM ELEMENT_AT (NTH INDEX ESTADO))
@@ -205,10 +204,11 @@
    INDEX 0
    BUSQOPTION (NTH INDEX CLOSEDSTACK)
    )
-  (PUSH (FIFTH NODO) MOVSOL)
+  (PUSH (SECOND NODO) MOVSOL)
   (LOOP
    (COND
     ((= 1 (FIRST BUSQOPTION))
+     (PUSH (SECOND BUSQOPTION) MOVSOL)
      (RETURN-FROM BACKTRACK (REVERSE MOVSOL))
      )
     ((NULL BUSQOPTION)
@@ -220,7 +220,7 @@
      )
     ((= IDFATHER (FIRST BUSQOPTION))
      (SETQ IDFATHER (SIXTH BUSQOPTION))
-     (PUSH (FIFTH BUSQOPTION) MOVSOL)
+     (PUSH (SECOND BUSQOPTION) MOVSOL)
      )
     )
    (SETQ INDEX (+ 1 INDEX))
@@ -280,6 +280,15 @@
 
 ;;(SETQ ESTADOS '(1 2 3 4 0 5 6 7 8))
 (WRITE (PATH))
+(SETQ MOVSOL (REVERSE MOVSOL))
+(WITH-OPEN-FILE (STR "/Users/alxalmora/Documents/8puzzle/Java/OutFile.txt" 
+                        :DIRECTION :OUTPUT 
+                        :IF-EXISTS :SUPERSEDE
+                        :IF-DOES-NOT-EXIST :CREATE)
+(DOLIST (SEGMENT MOVSOL)
+  (FORMAT STR "~D~%" SEGMENT)
+)
+) 
 ;;(NULL (SECOND '(1)))
 ;;(SETQ AUX (LIST IDNODO  NODO 0 (MANHATTAN NODO) NIL 0 ))
 ;;(ISINCLOSEDSTACK (LIST 3  NODO 0 (MANHATTAN NODO) NIL 1 ))
