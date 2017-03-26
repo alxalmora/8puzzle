@@ -1,6 +1,10 @@
 ;; Resolver 8-puzzle utilizando una heuristica de Manhattan 
 ;; EL INDEX DE LA LISTA INICIA EN 0
 (DEFVAR *META* '(1 2 3 4 5 6 7 8 0))
+(SETQ 
+ OPENSTACK '()
+ CLOSESTACK '()
+)
 (DEFUN MANHATTAN (ESTADO)
   (SETQ DISTANCIA 0)
   (DOTIMES (N 9)
@@ -118,6 +122,16 @@
     )
   (RETURN-FROM EXPAND HIJOS)
 )
+
+(DEFUN CALCULACOSTO (NODO)
+;;Funcion que calcula el costo de un nodo, utilizando el nivel (#movimientos para llegar a ese estado) y la distancia manhattan (funcion heuristica).
+ (RETURN-FROM CALCULACOSTO (+ (THIRD NODO) (FOURTH NODO)))
+)
+(DEFUN ADDOPEN (NODO)
+
+)
+
+
 ;;Nodo::Struct (id::number, Estado::list, nivel::number, manhattan(estado),operacion::symbol, padre::number 
 ;;(SETQ ESTADOS '(1 2 3 4 0 5 6 7 8))
 (SETQ IDNODO 1)
