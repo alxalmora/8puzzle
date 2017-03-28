@@ -143,7 +143,7 @@
 
 (DEFUN CALCULACOSTO (NODO)
 ;;Funcion que calcula el costo de un nodo, utilizando el nivel (#movimientos para llegar a ese estado) y la distancia manhattan (funcion heuristica).
- (RETURN-FROM CALCULACOSTO (+  (* 1.1 (THIRD NODO)) (FOURTH NODO)))
+ (RETURN-FROM CALCULACOSTO (+  (THIRD NODO) (FOURTH NODO)))
 )
 (DEFUN ADDOPEN (NODO)
   ;;Agrega a abierto y va ordenando por costos
