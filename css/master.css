@@ -1,0 +1,12 @@
+.center-text{
+  text-align: center;
+}
+body{
+  font-size: 2em;
+  background: url("../img/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #3f3f3f;
+}
+a{
+  color:#d3d3d3;
+}

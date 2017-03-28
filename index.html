@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/master.css">
+    <title>8-Puzzle</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="col-xs-8 col-xs-offset-2 center-text">
+        <h1>8-Puzzle A* Manhattan</h1>
+        <h5>Inteligencia Artificial, Primavera 2017</h5>
+        <small>Alejandro Almora 149634, Miguel Velázquez 149402</small>
+        <hr>
+        <img class="img-thumbnail" src="img/screen3.png" alt="">
+        <p>Pequeño programa para resolver 8-puzzles. Utilizando Common Lisp (CCL) y Java para el GUI.</p>
+        <p>El programa utiliza el algoritmo A*, para realizar busquedas. Usamos Una funcion Heuristica <code>Costo(nodo) = Distancia_Manhattan(nodo) + nivel(nodo)</code></p>
+        <p>Tambien se programaron las siguientes funciones</p>
+        <ul>
+          <li>Element_At: Regresa el elemento en la posicion index (0 a Length - 1) </li>
+          <li>FirstN: Regresa los primeros N elementos de la lista</li>
+          <li>Manhattan: Funcion heuristica</li>
+          <li>PosX: Regresa la coordenada X (Matriz inducida)</li>
+          <li>PosY: Regresa la coordenada Y</li>
+          <li>Swap: Intercambia dos nodos</li>
+          <li>GetZero: Encuentra la posicion del 0 (Libre)</li>
+          <li>Up,Down,Right,Left: Funcion que hace movimientos a los lugares indicados, regresa NIL si no es un movimiento valido.</li>
+          <li>MakeMove: hace el movimiento indicado</li>
+          <li>Expand: Expande un nodo, regresa la lista de hijos formados</li>
+          <li>CalculaCosto: Función que calcula el valor de la heurística</li>
+          <li>IsInClosedStack: funcion que verifica si un nodo se encuentra en cerrado.</li>
+          <li>Backtrack: reconstruye el camino seguido para la solución</li>
+          <li>Print_Puzzle: Auxiliar para ver movimientos en Lisp</li>
+          <li>ADDOPEN|ADDCLOSE: Agrega a Abierto o Cerrado un nodo. En abierto busca su lugar.</li>
+          <li>Path: funcion que hace la busqueda</li>
+        </ul>
+        <p>Se utilizó Java para la realizacion de la GUI, con Java usando el Runtime actual, mandabamos un thread para correr el binario de CCL, el thread de Java lo ponemos a dormir por 5,000ms para darle tiempo a CCL de ejecutarse. Lo malo de llamar un Thread para el proceso de CCL es que no hay una forma de ver cuando existe un error y por lo tanto no podemos mandar algun error.</p>
+        <p><strong>El programa no es eficiente en el numero de movimientos</strong></p>
+        <img class="img-thumbnail" src="img/screen1.png" alt="">
+        <p>Para la ejecucion de Java se necesita editar la siguiente funcion, ya que requiere rutas absolutas.</p>
+        <img class="img-thumbnail" src="img/screen2.png" alt="">
+        <small>Linea de codigo: 471 del Archivo MainGUI.java</small>
+        <hr>
+        <code>Runtime.getRuntime().exec("/usr/local/bin/ccl64 --load /Users/alxalmora/Documents/8puzzle/Lisp/src/8puzzle.lisp");</code>
+        <hr>
+        <p>Se comparte el código utilizado con licencia MIT en <a href="http://github.com/alxalmora/8puzzle">Github</a>, el lenguaje utilizado fue Common Lisp (CL Clozure) que puede descargarse desde <a href="http://ccl.clozure.com">aquí</a></p>
+      </div>
+    </div>
+
+  </body>
+</html>
