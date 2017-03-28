@@ -493,6 +493,7 @@ public class MainGUI extends javax.swing.JFrame {
             System.out.println(line);
         }
 //        list = reverse(list);
+        System.out.println(list.size());
         System.out.println(list.toString());
         return list;
     }

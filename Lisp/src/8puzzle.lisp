@@ -17,14 +17,15 @@
 ;;Regresa los primeros N elementos de la lista
   (RETURN-FROM FIRSTN (REVERSE (NTHCDR (- (LENGTH LST) N) (REVERSE LST))))
 )
+
 (DEFUN MANHATTAN (ESTADO)
 ;;Funcion Heuristica que permite contar la distancia
   (SETQ DISTANCIA 0)
-  (DOTIMES (N 7)
+  (DOTIMES (N 8)
     (SETQ DISTANCIA
     (+
-     (ABS (- (POSX (POSITION (+ 1 N ) ESTADO)) (POSX N)))
-     (ABS (- (POSY (POSITION (+ 1 N) ESTADO)) (POSY N)))
+     (ABS (- (POSX (POSITION  (+ 1 N)  ESTADO)) (POSX N)))
+     (ABS (- (POSY (POSITION  (+ 1 N) ESTADO)) (POSY N)))
      DISTANCIA
    )
     )
@@ -142,7 +143,7 @@
 
 (DEFUN CALCULACOSTO (NODO)
 ;;Funcion que calcula el costo de un nodo, utilizando el nivel (#movimientos para llegar a ese estado) y la distancia manhattan (funcion heuristica).
- (RETURN-FROM CALCULACOSTO (+ (THIRD NODO) (FOURTH NODO)))
+ (RETURN-FROM CALCULACOSTO (+  (THIRD NODO) (FOURTH NODO)))
 )
 (DEFUN ADDOPEN (NODO)
   ;;Agrega a abierto y va ordenando por costos
@@ -280,6 +281,7 @@
 
 ;;(SETQ ESTADOS '(1 2 3 4 0 5 6 7 8))
 (WRITE (PATH))
+;;PRINT (GETINDEXOF 1 '(2 3 1 4)))
 (SETQ MOVSOL (REVERSE MOVSOL))
 (WITH-OPEN-FILE (STR "/Users/alxalmora/Documents/8puzzle/Java/OutFile.txt" 
                         :DIRECTION :OUTPUT 
